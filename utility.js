@@ -1,14 +1,15 @@
 
 var Task = function() {
-	this.results = [];
+	this.res = new Array();
+	this.value = arguments[0];
 	this.completed = false;
 }
 //Defining own map method
 Task.prototype.map = function(projectionFunction) {
  
-    this.forEach(function(itemInArray) {
-        this.results.push(projectionFunction(itemInArray));
-    });
-    return this.results;
+    this.value.forEach(function(itemInArray) {
+        this.res.push(projectionFunction(itemInArray));
+    }, this);
+    return this.res;
 };
 module.exports = Task;
